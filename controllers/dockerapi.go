@@ -84,6 +84,11 @@ type DockerapiController struct {
 	beego.Controller
 }
 
+/* we'll return application/json always */
+func (this *DockerapiController) Prepare() {
+	this.Ctx.Output.ContentType(".json")
+}
+
 /* Wrap docker remote API to get contaienrs */
 func (this *DockerapiController) GetContainers() {
 	address := "/containers/json"
